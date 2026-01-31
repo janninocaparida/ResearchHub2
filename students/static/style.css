@@ -1,0 +1,124 @@
+/* ---------- GLOBAL ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* ---------- CONTAINERS ---------- */
+.container,
+.container1,
+.container2 {
+    margin: 80px 240px 60px;
+    padding: 40px 100px 100px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- HEADINGS ---------- */
+h1 {
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+/* ---------- TABLE ---------- */
+#customers {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+#customers th,
+#customers td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#customers th {
+    background-color: #04AA6D;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#customers tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#customers tr:hover {
+    background-color: #eaf5ff;
+    transition: background-color 0.3s;
+}
+
+#customers #mid {
+    text-align: center;
+}
+
+/* ---------- BUTTONS ---------- */
+#customers button,
+.container1 #new,
+.container2 #new1,
+.container #new3 {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Update Button */
+#customers #up {
+    background-color: #1976d2;
+}
+
+#customers #up:hover {
+    background-color: #125aa3;
+}
+
+/* Delete Button */
+#customers #del {
+    background-color: #d32f2f;
+}
+
+#customers #del:hover {
+    background-color: #9a2424;
+}
+
+/* New Buttons */
+.container1 #new,
+.container2 #new1,
+.container #new3 {
+    background-color: #1e88e5;
+}
+
+.container1 #new:hover,
+.container2 #new1:hover,
+.container #new3:hover {
+    background-color: #1565c0;
+    transform: translateY(-2px);
+}
+
+/* ---------- INPUTS ---------- */
+.container1 input,
+.container2 input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.container1 input:focus,
+.container2 input:focus {
+    border-color: #04AA6D;
+    box-shadow: 0 0 5px rgba(4, 170, 109, 0.3);
+}
