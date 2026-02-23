@@ -1,44 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-{% load static %}
-<link rel="stylesheet" href="{% static 'style.css' %}">
+{% block title %}Students - ResearchHub{% endblock %}
 
-<body>
-    <div class="container">
-        <h1>Students</h1>
-        <table id="customers" border="1">
-            <thead>
-                <th>Id</th>
+{% block content %}
+<h1>📋 Students Management</h1>
+
+<!-- Search Form -->
+<div style="margin-bottom: 20px; padding: 15px; background-color: #f9f9f9; border-radius: 5px;">
+    <form method="GET" action="{% url 'home' %}" style="display: flex; gap: 10px;">
+        <input 
+            type="text" 
+            name="search" 
+            placeholder="Search by name or department..." 
+            value="{{ search_query }}"
+            style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;"
+        >
+        <button type="submit" style="padding: 10px 20px; background-color: #04AA6D; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            🔍 Search
+        </button>
+        {% if search_query %}
+            <a href="{% url 'home' %}" style="padding: 10px 20px; background-color: #666; color: white; border: none; border-radius: 5px; text-decoration: none; cursor: pointer;">
+                ❌ Clear
+            </a>
+        {% endif %}
+    </form>
+</div>
+
+{% if students %}
+    <table id="customers" border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Student ID</th>
                 <th>Name</th>
                 <th>Department</th>
-                
-                <th colspan="2" id="mid">Action</th>
-            </thead>
-            {% for x in S %}
+                <th>Created</th>
+                <th colspan="2" id="mid">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
             <tr>
-                <td>{{x.s_id}}</td>
-                <td>{{x.s_name}}</td>
-                <td>{{x.s_dept}}</td>
-               
+                <td>{{ student.id }}</td>
+                <td>{{ student.s_id }}</td>
+                <td>{{ student.s_name }}</td>
+                <td>{{ student.s_dept }}</td>
+                <td>{{ student.created_at|date:"M d, Y" }}</td>
                 <td>
-                    <!-- <a href="update/{{x.id}}"><button id="up">update</button></a> -->
+                    <a href="{% url 'update_view' student.id %}">
+                        <button id="up">✏️ Edit</button>
+                    </a>
                 </td>
                 <td>
-                    <!-- <a href="delete/{{x.id}}"><button id="del">delete</button></a> -->
+                    <a href="{% url 'delete_view' student.id %}">
+                        <button id="del">🗑️ Delete</button>
+                    </a>
                 </td>
             </tr>
             {% endfor %}
-        </table>
-        <br><br>
-        <a href="{% url 'create' %}"><button id="new3">Add Member</button></a>
+        </tbody>
+    </table>
+    
+    <p style="margin-top: 15px; color: #666;">
+        Total Students: <strong>{{ students|length }}</strong>
+    </p>
+{% else %}
+    <div style="padding: 40px; text-align: center; background-color: #f9f9f9; border-radius: 5px;">
+        <p style="font-size: 18px; color: #666;">
+            {% if search_query %}
+                No students found matching "{{ search_query }}"
+            {% else %}
+                No students yet. <a href="{% url 'create' %}" style="color: #04AA6D; font-weight: bold;">Add the first student</a>
+            {% endif %}
+        </p>
     </div>
-</body>
+{% endif %}
 
-</html>
+<div style="margin-top: 20px;">
+    <a href="{% url 'create' %}">
+        <button id="new3">➕ Add New Student</button>
+    </a>
+</div>
+{% endblock %}

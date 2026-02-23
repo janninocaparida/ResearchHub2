@@ -6,23 +6,41 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
 }
 
 /* ---------- CONTAINERS ---------- */
 .container,
 .container1,
 .container2 {
-    margin: 80px 240px 60px;
-    padding: 40px 100px 100px;
+    margin: 20px auto;
+    padding: 40px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    max-width: 1000px;
+}
+
+@media (max-width: 768px) {
+    .container,
+    .container1,
+    .container2 {
+        margin: 10px;
+        padding: 20px;
+    }
 }
 
 /* ---------- HEADINGS ---------- */
 h1 {
     color: #2e7d32;
     margin-bottom: 20px;
+    margin-top: 0;
+}
+
+h3 {
+    color: #333;
+    margin-bottom: 15px;
 }
 
 /* ---------- TABLE ---------- */
@@ -31,12 +49,14 @@ h1 {
     border-collapse: collapse;
     overflow: hidden;
     border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 #customers th,
 #customers td {
     border: 1px solid #ddd;
-    padding: 10px;
+    padding: 12px;
+    text-align: left;
 }
 
 #customers th {
@@ -44,6 +64,7 @@ h1 {
     color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    font-weight: bold;
 }
 
 #customers tr:nth-child(even) {
@@ -63,15 +84,18 @@ h1 {
 #customers button,
 .container1 #new,
 .container2 #new1,
-.container #new3 {
+.container #new3,
+button[type="submit"],
+button[type="button"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border-radius: 6px;
     border: none;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-size: 14px;
 }
 
 /* Update Button */
@@ -92,11 +116,83 @@ h1 {
     background-color: #9a2424;
 }
 
-/* New Buttons */
+/* New/Submit Buttons */
 .container1 #new,
 .container2 #new1,
 .container #new3 {
     background-color: #1e88e5;
+}
+
+.container1 #new:hover,
+.container2 #new1:hover,
+.container #new3:hover {
+    background-color: #1565c0;
+}
+
+button[type="submit"] {
+    background-color: #04AA6D;
+}
+
+button[type="submit"]:hover {
+    background-color: #038a57;
+}
+
+/* ---------- FORM INPUTS ---------- */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #04AA6D;
+    box-shadow: 0 0 5px rgba(4, 170, 109, 0.3);
+}
+
+/* ---------- FORM LABELS ---------- */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 600px) {
+    #customers {
+        font-size: 13px;
+    }
+    
+    #customers th,
+    #customers td {
+        padding: 8px;
+    }
+    
+    .container,
+    .container1,
+    .container2 {
+        margin: 5px;
+        padding: 15px;
+    }
+    
+    button {
+        padding: 8px !important;
+        font-size: 12px !important;
+    }
 }
 
 .container1 #new:hover,
